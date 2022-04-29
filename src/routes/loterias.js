@@ -29,12 +29,12 @@ router.get("/loterias",(req, res) => {
         .catch(err => res.json({message: err}));
 });
 
-//Obtener Una Loteria especifica 
+//Obtener Una Loteria especifica
 router.get("/loterias/:loteria",(req, res) => {
     const { loteria } = req.params;
     //console.log(loteria)
     loteriaSchema
-        .findOne({loteria: loteria})
+        .find({loteria: loteria})
         .then(data => res.json(data))
         .catch(err => res.json({message: err}));
 });
