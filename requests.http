@@ -1,10 +1,28 @@
-###
+### #!------------------------------------------------------
 POST http://localhost:9000/api/loterias HTTP/1.1
-Content-Type: aplication/json
+Content-Type: apllication/json
 
 {
-    "loteria" : "La Primera",
-    "sorteo" : "La Primera PM",
-    "numeros_ganadores" : ["23","00","23"],
-    "fecha" : "10/10/2021"
+    "loteria" : "",
+    "sorteo" : "",
+    "numeros_ganadores" : ["00","00","00"],
+    "fecha" : ""
 }
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/loterias HTTP/1.1
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/fecha/fecha HTTP/1.1
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/loteria/loteria HTTP/1.1
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/sorteo/sorteo HTTP/1.1
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/sorteo/sorteo/fecha HTTP/1.1
+
+### #!------------------------------------------------------
+GET  http://localhost:9000/api/loteria/loteria/fecha HTTP/1.1
