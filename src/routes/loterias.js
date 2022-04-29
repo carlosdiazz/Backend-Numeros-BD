@@ -29,7 +29,7 @@ router.get("/loterias",(req, res) => {
         .catch(err => res.json({message: err}));
 });
 
-//Obtener Una Loteria especifica
+//Obtener Una Loteria especifica 
 router.get("/loterias/:loteria",(req, res) => {
     const { loteria } = req.params;
     //console.log(loteria)
@@ -38,5 +38,20 @@ router.get("/loterias/:loteria",(req, res) => {
         .then(data => res.json(data))
         .catch(err => res.json({message: err}));
 });
+
+//Obtener Una Loteria especifica por fecha
+router.get("/loterias/:sorteo/:fecha",(req, res) => {
+    const { sorteo, fecha } = req.params;
+    console.info(`Obteniendo la loteria ${sorteo} para la fecha ${fecha}`);
+    loteriaSchema
+        .findOne({sorteo: sorteo , fecha: fecha})
+        .then(data => {
+            console.info(`Buscando Sorteo: ${sorteo}`);
+            res.json(data)
+
+        })
+        .catch(err => res.json({message: err}));
+    })
+
 
 module.exports = router;
