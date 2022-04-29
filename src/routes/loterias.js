@@ -39,7 +39,7 @@ router.get("/fecha/:fecha",(req, res) => {
 });
 
 //Obtener Una Loteria especifica
-router.get("/loterias/:loteria",(req, res) => {
+router.get("/loteria/:loteria",(req, res) => {
     const { loteria } = req.params;
     //console.log(loteria)
     loteriaSchema
@@ -49,7 +49,7 @@ router.get("/loterias/:loteria",(req, res) => {
 });
 
 //Obtener Un Sorteo especifico
-router.get("/loterias/:sorteo",(req, res) => {
+router.get("/sorteo/:sorteo",(req, res) => {
     const { sorteo } = req.params;
     //console.log(loteria)
     loteriaSchema
@@ -59,7 +59,7 @@ router.get("/loterias/:sorteo",(req, res) => {
 });
 
 //Obtener Una Loteria especifica por fecha
-router.get("/loterias/:sorteo/:fecha",(req, res) => {
+router.get("/loteria/:sorteo/:fecha",(req, res) => {
     const { sorteo, fecha } = req.params;
     console.info(`Obteniendo la loteria ${sorteo} para la fecha ${fecha}`);
     loteriaSchema
