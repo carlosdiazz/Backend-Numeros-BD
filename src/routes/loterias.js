@@ -28,20 +28,18 @@ router.get("/loterias",(req, res) => {
         .catch(err => res.json({message: err}));
 });
 
-//Obtener Por Fecha
+//Obtener Resultados Por Fecha
 router.get("/fecha/:fecha",(req, res) => {
     const { fecha } = req.params;
-    //console.log(loteria)
     loteriaSchema
         .find({fecha: fecha})
         .then(data => res.json(data))
         .catch(err => res.json({message: err}));
 });
 
-//Obtener Una Loteria especifica
+//Obtener Una Loteria Especifica
 router.get("/loteria/:loteria",(req, res) => {
     const { loteria } = req.params;
-    //console.log(loteria)
     loteriaSchema
         .find({loteria: loteria})
         .then(data => res.json(data))
@@ -51,17 +49,16 @@ router.get("/loteria/:loteria",(req, res) => {
 //Obtener Un Sorteo especifico
 router.get("/sorteo/:sorteo",(req, res) => {
     const { sorteo } = req.params;
-    //console.log(loteria)
     loteriaSchema
         .find({sorteo: sorteo})
         .then(data => res.json(data))
         .catch(err => res.json({message: err}));
 });
 
-//Obtener Una Loteria especifica por fecha
-router.get("/loteria/:sorteo/:fecha",(req, res) => {
+//Obtener Un Sorteo especifico por Fecha
+router.get("/sorteo/:sorteo/:fecha",(req, res) => {
     const { sorteo, fecha } = req.params;
-    console.info(`Obteniendo la loteria ${sorteo} para la fecha ${fecha}`);
+    console.info(`Obteniendo el sorteo: ${sorteo} para la fecha: ${fecha}`);
     loteriaSchema
         .findOne({sorteo: sorteo , fecha: fecha})
         .then(data => {
@@ -72,5 +69,16 @@ router.get("/loteria/:sorteo/:fecha",(req, res) => {
         .catch(err => res.json({message: err}));
     })
 
+    router.get("/loteria/:loteria/:fecha",(req, res) => {
+        const { loteria, fecha } = req.params;
+        console.info(`Obteniendo la loteria: ${sorteo} para la fecha: ${fecha}`);
+        loteriaSchema
+            .findOne({loteria: loteria , fecha: fecha})
+            .then(data => {
+                console.info(`Buscando Sorteo: ${sorteo}`);
+                res.json(data)
 
+            })
+            .catch(err => res.json({message: err}));
+        })
 module.exports = router;
