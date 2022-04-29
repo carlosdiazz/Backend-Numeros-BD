@@ -1,6 +1,5 @@
 const express = require('express')
 const loteriaSchema = require('../models/loteria')
-
 const router = express.Router();
 
 //Crear Loteria
@@ -29,12 +28,32 @@ router.get("/loterias",(req, res) => {
         .catch(err => res.json({message: err}));
 });
 
+//Obtener Por Fecha
+router.get("/fecha/:fecha",(req, res) => {
+    const { fecha } = req.params;
+    //console.log(loteria)
+    loteriaSchema
+        .find({fecha: fecha})
+        .then(data => res.json(data))
+        .catch(err => res.json({message: err}));
+});
+
 //Obtener Una Loteria especifica
 router.get("/loterias/:loteria",(req, res) => {
     const { loteria } = req.params;
     //console.log(loteria)
     loteriaSchema
         .find({loteria: loteria})
+        .then(data => res.json(data))
+        .catch(err => res.json({message: err}));
+});
+
+//Obtener Un Sorteo especifico
+router.get("/loterias/:sorteo",(req, res) => {
+    const { sorteo } = req.params;
+    //console.log(loteria)
+    loteriaSchema
+        .find({sorteo: sorteo})
         .then(data => res.json(data))
         .catch(err => res.json({message: err}));
 });
