@@ -5,12 +5,19 @@ const router = express.Router();
 
 //Crear Loteria
 router.post("/loterias",(req, res) => {
-    const loteria = loteriaSchema(req.body);
-    console.log(req.body)
-    loteria
+    const loteriaModelo = loteriaSchema(req.body);
+    const { loteria, sorteo } = req.body;
+    console.log(`Agregando la loteria: ${loteria} para el sorteo ${sorteo} `);
+    loteriaModelo
         .save()
-        .then(data => res.json(data))
-        .catch(err => res.json({message: err}));
+        .then(data => {
+            console.log('Loteria Agregada con Exito')
+            res.json(data)
+        })
+        .catch(err =>
+            console.log(
+                `Error al enviar la loteria : ${loteria} para el sorteo ${sorteo}` + err
+            ));
 });
 
 
