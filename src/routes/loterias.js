@@ -3,7 +3,7 @@ const loteriaSchema = require('../models/loteria')
 const router = express.Router();
 
 //Crear Loteria
-router.post("/loterias",(req, res) => {
+router.post("/sorteo",(req, res) => {
     const loteriaModelo = loteriaSchema(req.body);
     const { loteria, sorteo } = req.body;
     console.log(`Agregando la loteria: ${loteria} para el sorteo ${sorteo} `);
