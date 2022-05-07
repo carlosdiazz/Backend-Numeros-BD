@@ -17,7 +17,7 @@ const loteriaSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    agredado_por: {
+    agregado_por: {
         type: String,
         required: true
     }
