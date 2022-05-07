@@ -17,6 +17,11 @@ const loteriaSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    agredado_por: {
+        type: String,
+        required: true
+    }
+
 });
 
 module.exports = mongoose.model('loteria', loteriaSchema);
