@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config();
 const userRoutes = require('./routes/loterias')
-
+const cors = require('cors')
 const app = express()
 const port = 9000
 
@@ -10,6 +10,7 @@ const port = 9000
 //Middleware
 app.use(express.json());
 app.use('/api', userRoutes);
+app.use(cors());
 
 
 //Rutas
