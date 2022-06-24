@@ -1,5 +1,7 @@
+const { json } = require('express');
 const express = require('express')
 const loteriaSchema = require('../models/loteria')
+const configuracionSchema = require('../models/configuracion')
 const router = express.Router();
 
 //Crear Loteria
@@ -82,4 +84,13 @@ router.get("/sorteo/:sorteo/:fecha",(req, res) => {
             })
             .catch(err => res.json({message: err}));
         })
+
+    router.get("/configuracion_loterias",(req, res) => {
+        //console.log(`Holaaa ===> ${JSON.stringify(res.json())}`)
+        //res.send('HOlaaaaa')
+        configuracionSchema
+            .find()
+            .then(data => res.json(data))
+        //    .catch(err => res.json({message: err}));
+    });
 module.exports = router;
