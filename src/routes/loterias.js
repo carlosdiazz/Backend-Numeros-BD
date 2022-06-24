@@ -25,7 +25,7 @@ router.post("/sorteo",(req, res) => {
 router.get("/loterias",(req, res) => {
     loteriaSchema
         .find()
-        .then(data => res.json(data))
+        .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
 
@@ -34,16 +34,17 @@ router.get("/fecha/:fecha",(req, res) => {
     const { fecha } = req.params;
     loteriaSchema
         .find({fecha: fecha})
-        .then(data => res.json(data))
+        .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
 
 //Obtener Una Loteria Especifica
 router.get("/loteria/:loteria",(req, res) => {
     const { loteria } = req.params;
+    console.log("🚀 => file: loterias.js => line 44 => router.get => loteria=>", loteria)
     loteriaSchema
         .find({loteria: loteria})
-        .then(data => res.json(data))
+        .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
 
@@ -52,7 +53,7 @@ router.get("/sorteo/:sorteo",(req, res) => {
     const { sorteo } = req.params;
     loteriaSchema
         .find({sorteo: sorteo})
-        .then(data => res.json(data))
+        .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
 
@@ -64,7 +65,7 @@ router.get("/sorteo/:sorteo/:fecha",(req, res) => {
         .findOne({sorteo: sorteo , fecha: fecha})
         .then(data => {
             console.info(`Buscando el Sorteo: ${sorteo}`);
-            res.json(data)
+            res.json(data.reverse())
 
         })
         .catch(err => res.json({message: err}));
@@ -78,8 +79,7 @@ router.get("/loteria/:loteria/:fecha",(req, res) => {
         .find({loteria: loteria, fecha: fecha})
         .then(data => {
             console.info(`Buscando La Loteria: ${loteria}`);
-            console.log(`HOLAA =>  ${typeof data}`);
-            res.json(data)
+            res.json(data.reverse())
         })
         .catch(err => res.json({message: err}));
 });
