@@ -78,6 +78,7 @@ router.get("/loteria/:loteria/:fecha",(req, res) => {
         .find({loteria: loteria, fecha: fecha})
         .then(data => {
             console.info(`Buscando La Loteria: ${loteria}`);
+            console.log(`HOLAA =>  ${typeof data}`);
             res.json(data)
         })
         .catch(err => res.json({message: err}));

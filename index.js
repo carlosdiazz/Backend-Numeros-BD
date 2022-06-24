@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config();
-const userRoutes = require('./routes/loterias')
+const userRoutes = require('./src/routes/loterias')
 const cors = require('cors')
 const app = express()
 const port = 9000
@@ -16,7 +16,6 @@ app.use(cors());
 //Rutas
 app.get('/',(req, res)=>{
     res.send('Hola Mundo');
-
 });
 
 
