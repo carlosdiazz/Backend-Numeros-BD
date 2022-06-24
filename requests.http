@@ -13,16 +13,19 @@ Content-Type: apllication/json
 GET  http://localhost:9000/api/loterias HTTP/1.1
 
 ### #!------------------------------------------------------
-GET  http://localhost:9000/api/fecha/fecha HTTP/1.1
+GET  http://localhost:9000/api/fecha/$fecha HTTP/1.1
 
 ### #!------------------------------------------------------
-GET  http://localhost:9000/api/loteria/loteria HTTP/1.1
+GET  http://localhost:9000/api/loteria/$loteria HTTP/1.1
 
 ### #!------------------------------------------------------
-GET  http://localhost:9000/api/sorteo/sorteo HTTP/1.1
+GET  http://localhost:9000/api/sorteo/$sorteo HTTP/1.1
 
 ### #!------------------------------------------------------
-GET  http://localhost:9000/api/sorteo/sorteo/fecha HTTP/1.1
+GET  http://localhost:9000/api/sorteo/$sorteo/$fecha HTTP/1.1
 
 ### #!------------------------------------------------------
-GET  http://localhost:9000/api/loteria/loteria/fecha HTTP/1.1
+GET  http://localhost:9000/api/loteria/$loteria/$fecha HTTP/1.1
+
+### #!--------------------------------------------------------
+GET http://localhost:9000/api/configuracion_loterias HTTP/1.1
