@@ -1,4 +1,3 @@
-const { json } = require('express');
 const express = require('express')
 const loteriaSchema = require('../models/loteria')
 const configuracionSchema = require('../models/configuracion')
@@ -69,28 +68,26 @@ router.get("/sorteo/:sorteo/:fecha",(req, res) => {
 
         })
         .catch(err => res.json({message: err}));
-    })
+})
 
-    //Obtener Una Loteria especifica por Fecha
-    router.get("/loteria/:loteria/:fecha",(req, res) => {
-        const { loteria, fecha } = req.params;
-        console.info(`Obteniendo la loteria: ${loteria} para la fecha: ${fecha}`);
-        loteriaSchema
-            .findOne({loteria: loteria, fecha: fecha})
-            .then(data => {
-                console.info(`Buscando La Loteria: ${loteria}`);
-                res.json(data)
-
-            })
-            .catch(err => res.json({message: err}));
+//Obtener Una Loteria especifica por Fecha
+router.get("/loteria/:loteria/:fecha",(req, res) => {
+    const { loteria, fecha } = req.params;
+    console.info(`Obteniendo la loteria: ${loteria} para la fecha: ${fecha}`);
+    loteriaSchema
+        .find({loteria: loteria, fecha: fecha})
+        .then(data => {
+            console.info(`Buscando La Loteria: ${loteria}`);
+            res.json(data)
         })
+        .catch(err => res.json({message: err}));
+});
 
-    router.get("/configuracion_loterias",(req, res) => {
-        //console.log(`Holaaa ===> ${JSON.stringify(res.json())}`)
-        //res.send('HOlaaaaa')
-        configuracionSchema
-            .find()
-            .then(data => res.json(data))
-        //    .catch(err => res.json({message: err}));
-    });
+router.get("/configuracion_loterias",(req, res) => {
+    configuracionSchema
+        .find()
+        .then(data => res.json(data))
+        .catch(err => res.json({message: err}));
+});
+
 module.exports = router;
