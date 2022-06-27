@@ -62,11 +62,10 @@ router.get("/sorteo/:sorteo/:fecha",(req, res) => {
     const { sorteo, fecha } = req.params;
     console.info(`Obteniendo el sorteo: ${sorteo} para la fecha: ${fecha}`);
     loteriaSchema
-        .findOne({sorteo: sorteo , fecha: fecha})
+        .find({sorteo: sorteo , fecha: fecha})
         .then(data => {
             console.info(`Buscando el Sorteo: ${sorteo}`);
-            res.json(data.reverse())
-
+            res.json(data)
         })
         .catch(err => res.json({message: err}));
 })
