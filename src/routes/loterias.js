@@ -33,7 +33,7 @@ router.get("/loterias",(req, res) => {
 router.get("/fecha/:fecha",(req, res) => {
     const { fecha } = req.params;
     loteriaSchema
-        .find({fecha: fecha})
+        .find({fecha: new RegExp(fecha, "i")})
         .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
@@ -43,7 +43,7 @@ router.get("/loteria/:loteria",(req, res) => {
     const { loteria } = req.params;
     console.log("🚀 => file: loterias.js => line 44 => router.get => loteria=>", loteria)
     loteriaSchema
-        .find({loteria: loteria})
+        .find({loteria: new RegExp(loteria, "i")})
         .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
@@ -52,7 +52,7 @@ router.get("/loteria/:loteria",(req, res) => {
 router.get("/sorteo/:sorteo",(req, res) => {
     const { sorteo } = req.params;
     loteriaSchema
-        .find({sorteo: sorteo})
+        .find({sorteo: new RegExp(sorteo, "i") })
         .then(data => res.json(data.reverse()))
         .catch(err => res.json({message: err}));
 });
@@ -62,7 +62,7 @@ router.get("/sorteo/:sorteo/:fecha",(req, res) => {
     const { sorteo, fecha } = req.params;
     console.info(`Obteniendo el sorteo: ${sorteo} para la fecha: ${fecha}`);
     loteriaSchema
-        .find({sorteo: sorteo , fecha: fecha})
+        .find({sorteo: new RegExp(sorteo, "i") , fecha: new RegExp(fecha, "i")})
         .then(data => {
             console.info(`Buscando el Sorteo: ${sorteo}`);
             res.json(data)
@@ -75,7 +75,7 @@ router.get("/loteria/:loteria/:fecha",(req, res) => {
     const { loteria, fecha } = req.params;
     console.info(`Obteniendo la loteria: ${loteria} para la fecha: ${fecha}`);
     loteriaSchema
-        .find({loteria: loteria, fecha: fecha})
+        .find({loteria: new RegExp(loteria, "i"), fecha: new RegExp(fecha, "i")})
         .then(data => {
             console.info(`Buscando La Loteria: ${loteria}`);
             res.json(data.reverse())
